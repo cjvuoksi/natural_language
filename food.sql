@@ -10,7 +10,6 @@ CREATE TABLE `Location`(
 CREATE TABLE `ProductLocation`(
     `product_id` BIGINT UNSIGNED NOT NULL,
     `location_id` BIGINT NOT NULL,
-    PRIMARY KEY(`location_id`),
     FOREIGN KEY(`product_id`) REFERENCES `Product`(`id`),
     FOREIGN KEY(`location_id`) REFERENCES `Location`(`id`)
 );
@@ -18,6 +17,8 @@ CREATE TABLE `Person`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,
     `contact_id` BIGINT NOT NULL,
     `address_id` BIGINT NOT NULL,
+    `first_name` TEXT NOT NULL,
+    `last_name` TEXXT NOT NULL,
     FOREIGN KEY(`contact_id`) REFERENCES `Contact`(`id`),
     FOREIGN KEY(`address_id`) REFERENCES `Address`(`id`)
 );
