@@ -20,11 +20,11 @@ tests = [
     "text": ""
   },
   {
-    "name": "double-shot, single domain",
+    "name": "1-shot, single domain",
     "text": "Which employees are also customers?\nSelect first_name, last_name from employee join person on employee.id = person.id join customer on person.id = customer.id;",
   },
   {
-    "name": "single-shot, cross domain",
+    "name": "1-shot, cross domain",
     "text": "Example database: create table person (\n    person_id integer primary key,\n    name varchar(20) not null\n);\n\ncreate table phone (\n    phone_id integer primary key,\n    person_id integer not null,\n    area_code int not null,\n    number int not null,\n    can_recieve_sms tinyint not null,\n    foreign key (person_id) references person (person_id)\n);\n\ncreate table address (\n    address_id integer primary key,\n    person_id integer not null,\n    street varchar(50),\n    zip integer not null\n);\n\ncreate table zip (\n    zip integer primary key,\n    city varchar(35),\n    state_two_letter_code char(2)\n);\n\ncreate table dog (\n    dog_id integer primary key,\n    name varchar(35),\n    breed varchar(35),\n    birth_date date\n);\n\ncreate table award (\n    award_id integer primary key,\n    dog_id integer not null,\n    event_date date,\n    award_name varchar(25) not null,\n    foreign key (dog_id) references dog (dog_id)\n);\n\ncreate table person_dog (\n    dog_id integer,\n    person_id integer,\n    foreign key (dog_id) references dog (dog_id),\n foreign key (person_id) references person (person_id)\n);\n" +
             "Who doesn't have a way for us to text them?  \nSELECT p.person_id, p.name\nFROM person p\nLEFT JOIN phone ph ON p.person_id = ph.person_id AND ph.can_recieve_sms = 1\nWHERE ph.phone_id IS NULL;"
   }
