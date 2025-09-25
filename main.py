@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-from api import send_api
+from api import send_api, send_to_api
 
 root = Tk()
 frm = ttk.Frame(root, padding=20)
@@ -24,7 +24,7 @@ ttk.Label(frm, text="Output:").grid(column=0, row=12)
 
 def submit():
   user_in = userInput.get("1.0", END)
-  response = send_api(user_in)
+  response = send_to_api(user_in)
   userInput.delete("1.0", END)
   apiOutput.set(response)
 

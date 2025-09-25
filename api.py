@@ -9,6 +9,7 @@ dbPath = os.path.join(directory, 'food.db')
 addDataPath = os.path.join(directory, 'addFood.sql')
 configPath = os.path.join(directory, 'config.json')
 schema: str
+common = "Use the following schema and respond with sqlite syntax: "
 
 db_init = True
 cursor: sqlite3.Cursor
@@ -28,22 +29,21 @@ def setup_db():
     open(setupPath) as setupFile,
     open(addDataPath) as addFile
   ):
-    cursor.executescript(setupFile.read())
+    schema = setupFile.read()
+    cursor.executescript(schema)
     cursor.executescript(addFile.read())
 
 def query_db(query: str):
   return cursor.execute(query).fetchall()
 
-def gpt(query: str, schema: str | None = None):
+def gpt(query: str):
   global client
   client.models.list()
   response = client.responses.create(
     model=config['model'],
     input=query,
     service_tier="flex"
-    # instructions=schema
   )
-  # print(f"Raw response: {response}")
   return response.output_text
 
 def parse_sql(response: str):
@@ -63,6 +63,14 @@ def gpt_(text):
   except Exception as e:
     print(e)
     return ""
+
+def send_to_api(query: str):
+  global db_init
+  if db_init:
+    setup_db()
+    db_init = False
+  text = "\n".join([common, schema, query])
+  return send_api(text, query, schema)
 
 def send_api(text: str, query: str | None = None, schema: str | None = None) -> str:
   global db_init
