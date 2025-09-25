@@ -1,7 +1,3 @@
-/opt/miniconda3/envs/ReflexAgent/bin/python /Users/charlesjohnson/Applications/PyCharm Professional Edition.app/Contents/plugins/python-ce/helpers/pycharm/_jb_unittest_runner.py --target test_api.Test.test_suite 
-Testing started at 20:19 ...
-Launching unittests with arguments python -m unittest test_api.Test.test_suite in /Users/charlesjohnson/Desktop/CS 452/AI
-
 zero-shot
 ================================================================
 Query: Use the following schema and respond with sqlite syntax: 
@@ -1301,10 +1297,5 @@ WHERE pa.state = sa.state;
 Database results: [(1, 'Alice', 'Jones', 'Bagger')]
 Natural Question and Answer: Which employees live in the same state as the store they work at and what is their role? Alice Jones works as a Bagger.
 ----------------------------------------------------------------------
-
-
-Ran 1 test in 127.608s
-
-OK
 
 Process finished with exit code 0
