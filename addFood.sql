@@ -3,39 +3,40 @@ values
     (1, "a@a.com", 5555555555),
     (2, "b@a.com", 5555555555),
     (3, "c@a.com", 5555555555),
-    (4, "d@a.com", 5555555555);
+    (4, "d@a.com", 5555555555),
+    (5, "store@a.com", 52083555555);
 
-insert into address
+insert into address (id, city, street, zip, state)
 values
-    (1, "provo 1", "cougar", 55555, "ut"),
-    (2, "provo 2", "cougar", 55555, "ct"),
-    (3, "provo 3", "cougar", 55555, "tx"),
-    (4, "provo 4", "cougar", 55555, "ca"),
-    (5, "provo 5", "cougar", 55555, "ut");
+    (1, "provo", "123 cougar", 55555, "ut"),
+    (2, "new york", "123 wall st", 55555, "ny"),
+    (3, "dallas", "123 main st", 55555, "tx"),
+    (4, "sacramento", "123 main st", 55555, "ca"),
+    (5, "orem", "123 main st", 55555, "ut");
 
-insert into person
+insert into person (id, contact_id, address_id, first_name, last_name)
 values
     (1, 1, 1, "Alice", "Jones"),
     (2, 2, 2, "Bob", "Smith"),
     (3, 3, 3, "Carl", "Smith"),
     (4, 4, 4, "Dave", "Jones");
 
-insert into customer
+insert into customer (id, member_since, fuel_points)
 values
     (1, "2020-05-05", 100),
     (3, "2025-01-01", 200);
 
-insert into store
+insert into store (id, address_id, contact_id)
 values
-    (1, 5);
+    (1, 5, 5);
 
-insert into employee
+insert into employee (id, salary, role, store_id)
 values
     (1, 10000, "Bagger", 1),
     (2, 70000, "Manager", 1),
     (4, 40000, "Cashier", 1);
 
-insert into food
+insert into food (id, name)
 values
     (1, "apple"),
     (2, "beef"),
@@ -46,7 +47,7 @@ values
     (7, "flour"),
     (8, "milk");
 
-insert into product
+insert into product (food_id, id, amount, price, next_rotation_date)
 values
     (1, 1, 20, 2, "2025-10-1"),
     (1, 2, 30, 2, "2025-10-15"),
@@ -61,7 +62,7 @@ values
     (8, 11, 40, 2, "2025-10-15"),
     (2, 12, 40, 2, "2025-10-15");
 
-insert into productstore
+insert into productstore (product_id, store_id)
 values
     (1, 1),
     (2, 1),
@@ -76,7 +77,7 @@ values
     (11, 1),
     (12, 1);
 
-insert into location
+insert into location (id, aisle, shelf)
 values
     (1, 1, 1),
     (2, 1, 2),
@@ -84,7 +85,7 @@ values
     (4, 2, 2),
     (5, 3, 1);
 
-insert into productlocation
+insert into productlocation (product_id, location_id)
 values
     (1, 1),
     (1, 3),
@@ -101,7 +102,7 @@ values
     (11, 5),
     (12, 5);
 
-insert into sale
+insert into sale (id, product_id, customer_id, quantity)
 values
     (1, 1, 1, 10),
     (2, 2, 3, 10),

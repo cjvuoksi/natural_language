@@ -46,7 +46,9 @@ CREATE TABLE `Employee`(
 CREATE TABLE `Store`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,
     `address_id` BIGINT NOT NULL,
-    FOREIGN KEY(`address_id`) REFERENCES `Address`(`id`)
+    `contact_id` BIGINT NOT NULL,
+    FOREIGN KEY(`address_id`) REFERENCES `Address`(`id`),
+    FOREIGN KEY(`contact_id`) REFERENCES `Contact`(`id`)
 );
 CREATE TABLE `Contact`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,
@@ -61,12 +63,12 @@ CREATE TABLE `ProductStore`(
     FOREIGN KEY(`store_id`) REFERENCES `Store`(`id`)
 );
 CREATE TABLE `Sale`(
-    `sale_id` BIGINT NOT NULL,
-    `food_id` BIGINT UNSIGNED NOT NULL,
+    `id` BIGINT NOT NULL,
+    `product_id` BIGINT UNSIGNED NOT NULL,
     `customer_id` BIGINT NOT NULL,
     `quantity` BIGINT NOT NULL,
-    PRIMARY KEY(`sale_id`),
-    FOREIGN KEY(`food_id`) REFERENCES `Food`(`id`),
+    PRIMARY KEY(`id`),
+    FOREIGN KEY(`product_id`) REFERENCES `Product`(`id`),
     FOREIGN KEY(`customer_id`) REFERENCES `Customer`(`id`)
 );
 CREATE TABLE `Product`(
