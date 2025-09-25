@@ -3,6 +3,8 @@
 This project models data that would be useful for a grocery store, including
 food, employees, customers, sales, and store information.
 
+![Schema image](grocery.png)
+
 ## Query it did well on
 
 __Question__: _What is the most purchased food?_
